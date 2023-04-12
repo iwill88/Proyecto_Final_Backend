@@ -1,0 +1,83 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <%- include('../partials/head'); %>
+
+</head>
+<body>
+    <div class="jumbotron">
+        <div class="d-flex justify-content-end">
+          <div class="d-flex">
+            <form class="mr-3" action="/products" method="get">
+              <input type="submit" value="Products" class="btn btn-danger">
+            </form>
+            <% if (cart) { %>
+              <form class="mr-3"  action="/cart" method="get">
+                <input type="submit" value="Cart" class="btn btn-success">
+              </form>
+            <% } else { %>
+              <div></div>
+            <% } %>
+            <form class="mr-3"  action="/profile" method="get">
+              <input type="submit" value="Profile" class="btn btn-secondary">
+            </form>
+            <form class="mr-3"  action="/chat" method="get">
+              <input type="submit" value="Chat" class="btn btn-primary">
+            </form>
+            <form class="mr-3"  action="/messages" method="get">
+              <input type="submit" value="Messages" class="btn btn-info">
+            </form>
+            <form id="logOut" action="/logout" method="post">
+              <input type="submit" value="Desloguear" class="btn btn-warning">
+            </form>
+          </div>
+          
+          
+        </div>
+        <h1 class="text-primary pb-4">Productos </h1>
+
+        
+        
+        <div class="d-flex flex-column">
+            
+            <div class="infoProfileContainer">
+
+
+                <% productos.forEach( producto=> {%>
+                
+                    <div class="pb-5">
+                        <div class="d-flex align-items-center" >
+                          <img src="<%= producto.thumbnail %>"" alt="<%= producto.title %>" style="width: 150px; height: 200px;">
+                        </div>
+                        <div class="d-flex align-items-center" >
+                            <h4 class=" fs-6 fw-bold " style="width: 300px;">Nombre del libro</h4>
+                            <div class=""><%= producto.title %></div>
+                        </div>
+                        <div class="d-flex align-items-center" >
+                            <h4 class=" fs-5 fw-bold " style="width: 300px;">Autor</h4>
+                            <div class=""><%= producto.author %></div>
+                        </div>
+                        <div class="d-flex align-items-center" >
+                            <h4 class=" fs-5 fw-bold " style="width: 300px;">Precio</h4>
+                            <div class="">S/. <%= producto.price %></div>
+                        </div>
+                        <form action="/api/carrito/addProduct" method="post" >
+                            <input  class="hidden" type="number" name="quantity" value=1>
+                            <input  class="hidden" type="text" name="id_prod" value=<%= producto.id %>>
+                            <input  class="hidden" type="text" name="id_user" value=<%= id_user %>>
+                            <button class="btn btn-success"type="submit">Agregar producto</button>
+                        </form>
+                    </div>
+                  
+                  
+                   
+                 <%}
+
+                 ) %>
+
+
+            </div>
+        </div>
+      </div>
+</body>
+</html>

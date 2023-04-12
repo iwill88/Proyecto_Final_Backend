@@ -1,0 +1,73 @@
+
+<script >
+
+const socket = io(); // emitimos el evento "connection" que el socket server esta escuchando
+
+
+const usuario = '<%= usuario %>'
+  const typeUser = '<%= type %>'
+
+socket.on('server-message', (messages) => {
+  const messagesHtml = messages
+    .map((message) => `
+      <div>
+        <strong class="text-primary">${message.email} </strong>
+        <span class="text-danger">${message.timestamp}: </span>
+        <em class="text-success">${message.text}</em>
+
+      </div>
+    `)
+    .join(' ');
+
+    const messagesID  = document.getElementById('messages')
+    
+    if (messagesID) {
+      document.getElementById('messages').innerHTML = messagesHtml;
+    }
+
+
+  const clientMessages = messages.filter(item => item.email === usuario)
+
+  const clientMessagesHtml = clientMessages
+    .map((message) => `
+      <div>
+        <strong class="text-primary">${message.email} </strong>
+        <span class="text-danger">${message.timestamp}: </span>
+        <em class="text-success">${message.text}</em>
+
+      </div>
+    `)
+    .join(' ');
+    const clientMessagesID  = document.getElementById('clientMessages')
+    
+    if (clientMessagesID) {
+      document.getElementById('clientMessages').innerHTML = clientMessagesHtml;
+    }
+    
+ 
+
+});
+
+
+
+
+const form = document.getElementById('form');
+
+function messageForm() {
+
+
+  const email = usuario;
+
+  const text = document.getElementById('text').value;
+
+  const type = (typeUser === false) ? "usuario" : "sistema"
+
+  const message = {  email, type, text}
+  socket.emit('new-message', message);
+ 
+  
+};
+
+
+
+</script>

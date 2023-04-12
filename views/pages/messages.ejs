@@ -1,0 +1,51 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <%- include('../partials/head'); %>
+  <%- include('../partials/scripts'); %>
+
+</head>
+<body>
+    <div class="jumbotron">
+        <div>
+            <div class="d-flex justify-content-end">
+              <div class="d-flex">
+                <form class="mr-3"  action="/products" method="get">
+                  <input type="submit" value="Products" class="btn btn-danger">
+                </form>
+                <% if (cart) { %>
+                  <form class="mr-3"  action="/cart" method="get">
+                    <input type="submit" value="Cart" class="btn btn-success">
+                  </form>
+                <% } else { %>
+                  <div></div>
+                <% } %>
+                <form class="mr-3"  action="/profile" method="get">
+                  <input type="submit" value="Profile" class="btn btn-secondary">
+                </form>
+                <form class="mr-3"  action="/chat" method="get">
+                  <input type="submit" value="Chat" class="btn btn-primary">
+                </form>
+                <form class="mr-3" action="/messages" method="get">
+                  <input type="submit" value="Messages" class="btn btn-info">
+                </form>
+                <form id="logOut" action="/logout" method="post">
+                  <input type="submit" value="Desloguear" class="btn btn-warning">
+                </form>
+              </div>
+              
+              
+            </div>
+           
+          </div>
+        
+            <h2 class="text-primary pb-4">Tus mensajes enviados</h2>
+            
+              <div id="clientMessages"></div>
+             
+          </div>
+
+
+      </div>
+</body>
+</html>

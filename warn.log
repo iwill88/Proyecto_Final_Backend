@@ -1,0 +1,10 @@
+[2023-04-07T17:12:34.438] [WARN] warn - ruta /favicon.ico metodo GET no implementada
+[2023-04-07T19:13:27.864] [WARN] warn - ruta /favicon.ico metodo GET no implementada
+[2023-04-08T14:05:22.315] [WARN] warn - ruta /favicon.ico metodo GET no implementada
+[2023-04-08T16:04:03.754] [WARN] warn - ruta /chat metodo POST no implementada
+[2023-04-08T16:04:47.872] [WARN] warn - ruta /chat metodo GET no implementada
+[2023-04-08T16:04:51.133] [WARN] warn - ruta /chat metodo GET no implementada
+[2023-04-08T16:05:05.812] [WARN] warn - ruta /chat metodo GET no implementada
+[2023-04-08T16:07:22.091] [WARN] warn - ruta /chat metodo POST no implementada
+[2023-04-10T17:49:29.650] [WARN] warn - ruta /favicon.ico metodo GET no implementada
+[2023-04-10T18:28:54.455] [WARN] warn - ruta /logout metodo GET no implementada

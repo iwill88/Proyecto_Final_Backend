@@ -1,0 +1,5 @@
+[2023-04-07T19:15:12.196] [ERROR] error - Se produjo un error al buscar a todos los productos: TypeError: Cannot read properties of undefined (reading 'find')
+[2023-04-07T19:22:05.959] [ERROR] error - Se produjo un error al buscar a todos los productos: TypeError: Cannot read properties of undefined (reading 'find')
+[2023-04-07T19:24:33.751] [ERROR] error - Se produjo un error al buscar a todos los productos: TypeError: Cannot read properties of undefined (reading 'find')
+[2023-04-10T17:49:47.887] [ERROR] error - No se encontró el carrito del usuario con ID 63f93184d08a08e05bc92ad9
+[2023-04-10T17:55:57.274] [ERROR] error - No se encontró el carrito del usuario con ID 63f93184d08a08e05bc92ad9
