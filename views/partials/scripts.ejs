@@ -3,21 +3,85 @@
 
 const socket = io(); // emitimos el evento "connection" que el socket server esta escuchando
 
-
 const usuario = '<%= usuario %>'
   const typeUser = '<%= type %>'
 
 socket.on('server-message', (messages) => {
-  const messagesHtml = messages
-    .map((message) => `
-      <div>
-        <strong class="text-primary">${message.email} </strong>
-        <span class="text-danger">${message.timestamp}: </span>
-        <em class="text-success">${message.text}</em>
 
-      </div>
+    const messagesHtmlAdmin = messages
+    .map(({email,timestamp,text,_id,responses}) => `
+      <form method="post" action="/respond" class="pb-2">
+  
+        <strong class="text-primary">${email} </strong>
+        <span class="text-danger">${timestamp}: </span>
+        <em class="text-success">${text}</em>
+        <input type="hidden" name="mensajeId" value=${_id}>
+        <input placeholder="Respuesta" type="text" name="response">
+        <button class="btn btn-primary" type="submit">Responder</button>
+    </form>
+    <div>
+        ${responses.map((response) => 
+          ` 
+          <div class="pb-2 pl-5">
+            <strong class="text-dark">Respuestas: </strong>
+            <div class="pt-2">
+              <strong class="text-primary">${response.email} </strong>
+              <span class="text-danger">${response.timestamp}: </span>
+              <em class="text-success">${response.response}</em>
+            </div>
+           
+          
+          </div>
+          
+          `
+          )}
+    </div>
     `)
     .join(' ');
+
+
+
+    const messagesIDAdmin  = document.getElementById('messagesAdmin')
+    
+    if (messagesIDAdmin) {
+      document.getElementById('messagesAdmin').innerHTML = messagesHtmlAdmin;
+    }
+
+
+ 
+    const messagesHtml = `<form id="form">` + messages
+    .map(({email,timestamp,text,responses}) => `
+      <div class="pb-2">
+        <strong class="text-primary">${email} </strong>
+        <span class="text-danger">${timestamp}: </span>
+        <em class="text-success">${text}</em>
+
+      </div>
+      <div>
+        ${responses.map((response) => 
+          ` 
+          <div class="pb-2 pl-5">
+            <strong class="text-dark">Respuestas: </strong>
+            <div class="pt-2">
+              <strong class="text-primary">${response.email} </strong>
+              <span class="text-danger">${response.timestamp}: </span>
+              <em class="text-success">${response.response}</em>
+            </div>
+           
+          
+          </div>
+          
+          `
+          )}
+    </div>
+    `)
+    .join(' ') + `
+              <input placeholder="Mensaje" type="text" name="mensaje" id="text">
+              <button class="btn btn-primary" onclick="messageForm()">Enviar!</button>
+            </form>
+    `;
+
+
 
     const messagesID  = document.getElementById('messages')
     
@@ -25,17 +89,35 @@ socket.on('server-message', (messages) => {
       document.getElementById('messages').innerHTML = messagesHtml;
     }
 
+  
 
   const clientMessages = messages.filter(item => item.email === usuario)
 
   const clientMessagesHtml = clientMessages
-    .map((message) => `
-      <div>
-        <strong class="text-primary">${message.email} </strong>
-        <span class="text-danger">${message.timestamp}: </span>
-        <em class="text-success">${message.text}</em>
+    .map(({email, timestamp,text,responses}) => `
+      <div class="pb-2">
+        <strong class="text-primary">${email} </strong>
+        <span class="text-danger">${timestamp}: </span>
+        <em class="text-success">${text}</em>
 
       </div>
+      <div>
+        ${responses.map((response) => 
+          ` 
+          <div class="pb-2 pl-5">
+            <strong class="text-dark">Respuestas: </strong>
+            <div class="pt-2">
+              <strong class="text-primary">${response.email} </strong>
+              <span class="text-danger">${response.timestamp}: </span>
+              <em class="text-success">${response.response}</em>
+            </div>
+           
+          
+          </div>
+          
+          `
+          )}
+    </div>
     `)
     .join(' ');
     const clientMessagesID  = document.getElementById('clientMessages')
@@ -60,7 +142,7 @@ function messageForm() {
 
   const text = document.getElementById('text').value;
 
-  const type = (typeUser === false) ? "usuario" : "sistema"
+  const type = "usuario"
 
   const message = {  email, type, text}
   socket.emit('new-message', message);

@@ -99,10 +99,16 @@ export default class CartService{
 
  async getCart (id_user) {
 
+
   try {
-    const owner = id_user
-    const cart = await this.CartDao.getByIdPopulate(owner,"productos","item")
-    if(!owner||!cart){
+    const owner = id_user;
+   
+    const user = await this.UserDao.getById(owner);
+    const cartId = user.cart
+
+    const cart = await this.CartDao.getByIdPopulate(cartId,"productos","item")
+    console.log("cart", cart)
+    if(!cart){
       loggerError.error(`No se encontró el carrito del usuario con ID ${owner}`);
       throw new Error(`No se encontró el carrito del usuario con ID ${owner}`);
     }
@@ -118,8 +124,11 @@ export default class CartService{
    try {
 
     const owner = id_user;
-    const cart = await this.CartDao.getByIdPopulate(owner,"productos","item")
+   
     const user = await this.UserDao.getById(owner);
+    const cartId = user.cart
+    
+    const cart = await this.CartDao.getByIdPopulate(cartId,"productos","item")
     const foundProduct = await this.ProductDao.getById(id_prod);
 
     if(!owner||!user||!foundProduct){
@@ -127,11 +136,12 @@ export default class CartService{
       throw new Error(`No se tienen los datos requeridos`);
     }
 
+
+    
     let products = [];
     let object = {};
 
     if (cart) {
-
       const duplicatedProduct = cart.productos.find(item => item.item._id.toString() === foundProduct._id.toString());
 
       if (duplicatedProduct) {
@@ -189,6 +199,7 @@ export default class CartService{
         address: user.address
       });
 
+
       const savedCart = await newCart.save();
 
       user.cart = savedCart._id;
@@ -210,14 +221,15 @@ export default class CartService{
   try {
 
     const owner = id_user;
-
-    console.log("user",id_user)
+   
+    const user = await this.UserDao.getById(owner);
+    const cartId = user.cart
 
     const product = await this.ProductDao.getById(id_prod);
     
     console.log("producto",id_prod)
 
-    const cart = await this.CartDao.getByIdPopulate(owner,"productos","item")
+    const cart = await this.CartDao.getByIdPopulate(cartId,"productos","item")
 
     if (!owner||!product||!cart){
       loggerError.error(`No se tienen los datos requeridos`);
@@ -274,9 +286,12 @@ async removeProduct(id_prod,id_user) {
   
   try {
 
-      const owner = id_user
+      const owner = id_user;
+    
+      const user = await this.UserDao.getById(owner);
+      const cartId = user.cart
 
-      const cart = await this.CartDao.getByIdPopulate(owner,"productos","item")
+      const cart = await this.CartDao.getByIdPopulate(cartId,"productos","item")
   
       const product = await this.ProductDao.getById(id_prod);
   

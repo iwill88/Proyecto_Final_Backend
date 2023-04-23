@@ -1,9 +1,12 @@
 import ProductService from "../services/productServices.js";
 import CartService  from "../services/cartServices.js";
+import MessageService from "../services/messageServices.js";
 import { ProductDTO } from "../dtos/ProductDto.js";
 
 const ProductServices = new ProductService()
 const CartServices = new CartService()
+const MessageServices = new MessageService()
+
 
 export const configAuthRouter = (authRouther,upload,passport) => {
     authRouther
@@ -41,6 +44,10 @@ export const configAuthRouter = (authRouther,upload,passport) => {
     .post("/backLogin", (req,res) => {
         res.redirect('/login')
     })
+
+    .post("/backHome", (req,res) => {
+        res.redirect('/')
+    })
     
     // LOGIN
     .get('/login', async (req, res) => {
@@ -62,12 +69,17 @@ export const configAuthRouter = (authRouther,upload,passport) => {
         })
     )
 
+
+    // LOGOUT
+
     .post("/logout", (req, res) => {
         req.session.destroy((err) => {
         if (!err)  res.render('pages/logOut', {usuario:req.user.name});    
         else console.log({ status: "Logout ERROR", body: err });
         })
     })
+
+    //PROFILE
     
     .get("/profile", (req,res) => {
         if (req.isAuthenticated()) {
@@ -87,6 +99,8 @@ export const configAuthRouter = (authRouther,upload,passport) => {
     }
     } )
 
+    //PRODUCTS
+
     .get("/products", async (req,res) => {
         if (req.isAuthenticated()) {
         const productos = await ProductServices.getAllProducts();
@@ -101,9 +115,13 @@ export const configAuthRouter = (authRouther,upload,passport) => {
     }
     } )
 
+    // CART
+
     .get("/cart", async (req,res) => {
         if (req.isAuthenticated()) {
+            
         const productos = await CartServices.getCart(req.user.id);
+        
         res.render('pages/cart', {
             name: req.user.name,
             id_user: req.user.id,
@@ -114,17 +132,22 @@ export const configAuthRouter = (authRouther,upload,passport) => {
     }
     } )
 
+    // CHAT
+
     .get("/chat",  (req,res) => {
         if (req.isAuthenticated()) {
         res.render('pages/chat', {
             usuario: req.user.email,
             type: req.user.isAdmin,
-            cart: req.user.cart
+            cart: req.user.cart,
+            isAdmin: req.user.isAdmin
             });
     } else {
         res.render('pages/login');
     }
     } )
+
+    // MESSAGES
 
     .get("/messages",  (req,res) => {
         if (req.isAuthenticated()) {
@@ -138,6 +161,28 @@ export const configAuthRouter = (authRouther,upload,passport) => {
         res.render('pages/login');
     }
     } )
+
+    .post("/respond",  async (req,res) => {
+        if (req.isAuthenticated()) {
+            const id = req.body.mensajeId
+            const text = req.body.response 
+            const email = req.user.email
+
+            const data = { 
+                email: email,
+                response: text
+            }
+
+            await MessageServices.addResponse(id, data)
+            res.redirect('/chat')
+
+    } else {
+        res.render('pages/login');
+    }
+    } )
+
+
+    // ORDERS
 
     .get("/order",  async (req,res) => {
         if (req.isAuthenticated()) {

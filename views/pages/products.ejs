@@ -61,7 +61,7 @@
                             <h4 class=" fs-5 fw-bold " style="width: 300px;">Precio</h4>
                             <div class="">S/. <%= producto.price %></div>
                         </div>
-                        <form action="/api/carrito/addProduct" method="post" >
+                        <form action="/api/carrito/addProductView" method="post" >
                             <input  class="hidden" type="number" name="quantity" value=1>
                             <input  class="hidden" type="text" name="id_prod" value=<%= producto.id %>>
                             <input  class="hidden" type="text" name="id_user" value=<%= id_user %>>

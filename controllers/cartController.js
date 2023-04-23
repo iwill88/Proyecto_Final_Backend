@@ -38,14 +38,6 @@ const deleteCart = async (req,res)=>{
     res.json(carrito);
 }
 
-/*const deleteProduct = async (req,res)=>{
-    
-
-    const carrito= await CartService.deleteProduct(req.params.id,req.params.id_prod);
-    res.json(carrito);
-}
-*/
-
 const getCartbyUser = async (req,res) => {
     const carrito = await CartServices.getCart(req.params.id_user)
     res.json(carrito)
@@ -53,8 +45,7 @@ const getCartbyUser = async (req,res) => {
 
 const addProduct = async (req,res) => {
     const carrito =  await CartServices.addProduct(Number(req.body.quantity), req.body.id_prod, req.body.id_user)
-    res.redirect("/products")
-    //res.json(carrito)
+    res.json(carrito)
 }
 
 const updateProductQuantity = async (req, res) => {
@@ -73,16 +64,24 @@ const emptyCart = async (req, res) => {
 }
 
 
+
+//Controllers views
+
+const addProductView = async (req,res) => {
+    const carrito =  await CartServices.addProduct(Number(req.body.quantity), req.body.id_prod, req.body.id_user)
+    res.redirect("/products")
+}
+
 export default {
     getAllCarrito,
     getCarrito,
     postCarrito,
     addProducts, 
     deleteCart,
-    //deleteProduct, 
     getCartbyUser, 
     addProduct, 
     updateProductQuantity, 
     removeProduct,
-    emptyCart
+    emptyCart,
+    addProductView
 }

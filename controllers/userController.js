@@ -4,14 +4,14 @@ import { UserDTO } from "../dtos/UserDto.js";
 
 const UserServices = new UserService();
 
-const getAll = async (req,res)=>{
+const getAllUsers = async (req,res)=>{
     
     const data = await UserServices.getAllUsers();
 
     res.json(data.map((user) => new UserDTO(user)));
 }
 
-const find = async (req,res)=>{
+const getUser = async (req,res)=>{
     
     const user = await UserServices.findUserById(req.params.id);
     
@@ -24,7 +24,7 @@ const findByEmail = async (req,res)=>{
     res.json(new UserDTO(user));
 }
 
-const post = async (req,res)=>{
+const createUser = async (req,res)=>{
     
     const newUser = await UserServices.saveUser(req.body)
   
@@ -46,4 +46,4 @@ const updateUser = async (req,res)=>{
 
 
 
-export default {getAll,find, post, deleteUser, updateUser, findByEmail}
+export default {getAllUsers,getUser, createUser, deleteUser, updateUser, findByEmail}

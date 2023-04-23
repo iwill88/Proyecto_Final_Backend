@@ -5,7 +5,6 @@ import dotenv from "dotenv"
 dotenv.config()
 
 import productController from "../controllers/productController.js"
-import roleVerification from "../middlewares/roleVerification.js"
 
 let db 
 
@@ -18,16 +17,16 @@ const routerProductos = Router();
 
 
 
-routerProductos.get('/',  roleVerification, db.getAll);
+routerProductos.get('/', db.getAllProducts);
 
-routerProductos.get('/category/:category',  roleVerification, db.getProducsByCategory);
+routerProductos.get('/category/:category', db.getProducsByCategory);
 
-routerProductos.get('/:id', roleVerification, db.find);
+routerProductos.get('/:id', db.getProduct);
 
-routerProductos.post ('/', roleVerification, db.post)
+routerProductos.post ('/', db.createProduct)
 
-routerProductos.delete('/:id', roleVerification, db.deleteProduct);
+routerProductos.delete('/:id', db.deleteProduct);
 
-routerProductos.put('/:id', roleVerification, db.update);
+routerProductos.put('/:id', db.updateProduct);
 
 export default routerProductos;

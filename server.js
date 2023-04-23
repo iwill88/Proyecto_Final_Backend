@@ -35,7 +35,7 @@ if (modo && cluster.isPrimary){
   else {
   
     const server = app.listen(PORT, () => {
-      console.log(`https://localhost:${PORT}`);
+      console.log(`http://localhost:${PORT}`);
     })
 
     const io = new IOServer(server);

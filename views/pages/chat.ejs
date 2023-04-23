@@ -13,7 +13,7 @@
                 <form class="mr-3"  action="/products" method="get">
                   <input type="submit" value="Products" class="btn btn-danger">
                 </form>
-                <% if (!cart) { %>
+                <% if (cart) { %>
                   <form class="mr-3"  action="/cart" method="get">
                     <input type="submit" value="Cart" class="btn btn-success">
                   </form>
@@ -40,11 +40,13 @@
           </div>
         
             <h2 class="text-primary pb-4">Centro de mensajes</h2>
-            <form id="form">
+
+            <% if (!isAdmin) { %>
               <div id="messages"></div>
-              <input placeholder="Mensaje" type="text" name="mensaje" id="text">
-              <button class="btn btn-primary" onclick="messageForm()">Enviar!</button>
-            </form>
+            <% } else { %>
+              <div id="messagesAdmin"></div>
+            <% } %>
+              
           </div>
 
 

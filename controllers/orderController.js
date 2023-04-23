@@ -13,7 +13,9 @@ const createOrder = async (req,res)=>{
     res.json(newOrder);
 }
 
-const createOrderEjs = async (req,res)=>{
+//Controller view
+
+const createOrderView = async (req,res)=>{
     
     await OrderServices.createOrder(req.body.id_user)
     res.redirect("/order")
@@ -22,4 +24,6 @@ const createOrderEjs = async (req,res)=>{
 
 
 
-export default {findOrderbyId, createOrder, createOrderEjs}
+
+
+export default {findOrderbyId, createOrder, createOrderView}

@@ -36,7 +36,7 @@ export default class MongoDbContainer {
 
       async getByIdPopulate(id,firstPath,secondPath) {
         try {
-          const item = this.model.findOne({ id }).populate({
+          const item = await this.model.findOne({ _id: id }).populate({
             path: firstPath,
             populate: {
               path: secondPath,
@@ -74,6 +74,15 @@ export default class MongoDbContainer {
       async updateById(id, itemData) {
         try {
           const data = await this.model.findOneAndUpdate({_id:id},{$set:itemData});
+          return data;
+        } catch (error) {
+          console.error(error);
+        }
+      }
+
+      async updateAndPush(id, itemData) {
+        try {
+          const data = await this.model.findOneAndUpdate({_id:id},{$push:{ responses: itemData }});
           return data;
         } catch (error) {
           console.error(error);

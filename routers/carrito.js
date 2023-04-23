@@ -4,7 +4,6 @@ import dotenv from "dotenv"
 dotenv.config()
 
 import cartController from "../controllers/cartController.js";
-import  roleVerification  from "../middlewares/roleVerification.js";
 
 let db
 db= cartController
@@ -13,27 +12,29 @@ db= cartController
 const routerCarrito = Router();
 
 
-routerCarrito.get('/',  roleVerification, db.getAllCarrito);
+routerCarrito.get('/', db.getAllCarrito);
 
-routerCarrito.get('/:id/productos', roleVerification, db.getCarrito);
+routerCarrito.get('/:id/productos', db.getCarrito);
 
-routerCarrito.post ('/', roleVerification, db.postCarrito);
+routerCarrito.post ('/', db.postCarrito);
 
-routerCarrito.post('/:id/productos',  roleVerification, db.addProducts);
+routerCarrito.post('/:id/productos', db.addProducts);
 
-routerCarrito.post ('/addProduct', roleVerification, db.addProduct);
+routerCarrito.post ('/addProduct', db.addProduct);
 
-routerCarrito.get ('/:id_user', roleVerification, db.getCartbyUser);
+routerCarrito.get ('/:id_user', db.getCartbyUser);
 
-routerCarrito.post ('/updateCant/:id_user', roleVerification, db.updateProductQuantity);
+routerCarrito.post ('/updateCant/:id_user', db.updateProductQuantity);
 
-routerCarrito.post ('/removeProd/:id_user', roleVerification, db.removeProduct);
+routerCarrito.post ('/removeProd/:id_user', db.removeProduct);
 
-routerCarrito.post ('/emptyCart/:id_user', roleVerification, db.emptyCart);
+routerCarrito.post ('/emptyCart/:id_user', db.emptyCart);
 
-routerCarrito.delete('/:id', roleVerification, db.deleteCart);
+routerCarrito.delete('/:id', db.deleteCart);
 
-//routerCarrito.delete('/:id/productos/:id_prod', roleVerification, db.deleteProduct);
+//Router view
+
+routerCarrito.post('/addProductView', db.addProductView)
 
 
 export default routerCarrito;

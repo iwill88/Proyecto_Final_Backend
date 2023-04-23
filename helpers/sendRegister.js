@@ -10,7 +10,7 @@ dotenv.config()
 
 const sendRegister = async (user) => {
 
-    const templatePath = path.join(__dirname, "../Apirestful/views/pages/registerMail.ejs")
+    const templatePath = path.join(__dirname, "../Proyecto_Final_Backend/views/pages/registerMail.ejs")
 
     const data = await ejs.renderFile(templatePath, {
           email:user.email,

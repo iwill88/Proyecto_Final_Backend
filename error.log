@@ -3,3 +3,24 @@
 [2023-04-07T19:24:33.751] [ERROR] error - Se produjo un error al buscar a todos los productos: TypeError: Cannot read properties of undefined (reading 'find')
 [2023-04-10T17:49:47.887] [ERROR] error - No se encontró el carrito del usuario con ID 63f93184d08a08e05bc92ad9
 [2023-04-10T17:55:57.274] [ERROR] error - No se encontró el carrito del usuario con ID 63f93184d08a08e05bc92ad9
+[2023-04-12T09:45:50.842] [ERROR] error - Se produjo un error al intentar registar al nuevo usuario: TypeError: Cannot read properties of undefined (reading 'save')
+[2023-04-12T09:53:19.655] [ERROR] error - Se produjo un error al intentar registar al nuevo usuario: TypeError: Cannot read properties of undefined (reading 'save')
+[2023-04-17T18:19:34.485] [ERROR] error - No se encontró el carrito del usuario con ID 63fa6ee863c851f4df96daf5
+[2023-04-17T18:22:14.636] [ERROR] error - No se encontró el carrito del usuario con ID 63fa6ee863c851f4df96daf5
+[2023-04-17T18:24:48.563] [ERROR] error - No se encontró el carrito del usuario con ID 63fa6ee863c851f4df96daf5
+[2023-04-17T18:26:16.258] [ERROR] error - No se encontró el carrito del usuario con ID 63fa6ee863c851f4df96daf5
+[2023-04-17T18:27:11.746] [ERROR] error - No se encontró el carrito del usuario con ID 63fa6ee863c851f4df96daf5
+[2023-04-17T18:28:03.536] [ERROR] error - No se encontró el carrito del usuario con ID 63fa6ee863c851f4df96daf5
+[2023-04-17T18:28:37.731] [ERROR] error - No se encontró el carrito del usuario con ID 63f93184d08a08e05bc92ad9
+[2023-04-17T18:35:31.544] [ERROR] error - No se encontró el carrito del usuario con ID 63f93184d08a08e05bc92ad9
+[2023-04-17T18:36:29.775] [ERROR] error - No se encontró el carrito del usuario con ID 63f93184d08a08e05bc92ad9
+[2023-04-17T18:39:18.382] [ERROR] error - No se encontró el carrito del usuario con ID 63f93184d08a08e05bc92ad9
+[2023-04-17T18:40:03.744] [ERROR] error - Se produjo un error al intentar buscar el carrito del usuario con ID 63f93184d08a08e05bc92ad9: ReferenceError: owner is not defined
+[2023-04-17T18:40:25.943] [ERROR] error - No se encontró el carrito del usuario con ID 63f93184d08a08e05bc92ad9
+[2023-04-17T18:42:01.568] [ERROR] error - No se encontró el carrito del usuario con ID 63fa6ee863c851f4df96daf5
+[2023-04-17T18:44:46.741] [ERROR] error - No se encontró el carrito del usuario con ID 63fa6ee863c851f4df96daf5
+[2023-04-17T18:51:31.786] [ERROR] error - No se encontró el carrito del usuario con ID 63fa6ee863c851f4df96daf5
+[2023-04-17T18:52:03.535] [ERROR] error - No se encontró el carrito del usuario con ID 63fa6ee863c851f4df96daf5
+[2023-04-17T18:52:58.951] [ERROR] error - No se encontró el carrito del usuario con ID 63fa6ee863c851f4df96daf5
+[2023-04-17T18:57:20.949] [ERROR] error - No se encontró el carrito del usuario con ID 63fa6ee863c851f4df96daf5
+[2023-04-17T18:59:39.745] [ERROR] error - No se encontró el carrito del usuario con ID 63fa6ee863c851f4df96daf5

@@ -56,6 +56,24 @@ export default class MessageService {
                throw err;
           }
         }
+
+        async addResponse(id,newResponse) {
+          try {
+               let data = {
+                    timestamp:new Date().toISOString(),
+                    ...newResponse,  
+                }
+                const response = await this.dao.updateAndPush(id,data);
+                if (!response) {
+                    loggerError.error(`No se creo la respuesta correctamente`);
+                    throw new Error(`No se creo la respuesta correctamente`);
+                }
+                return response
+          } catch (err) {
+               loggerError.error(`Se produjo un error al intentar crear una nueva respuesta: ${err}`);
+               throw err;
+          }
+        }
      
 
 }

@@ -10,7 +10,7 @@ dotenv.config()
 const sendOrderMailer = async (order, user) => {
 
 
-    const templatePath = path.join(__dirname, "../Apirestful/views/pages/orderMail.ejs")
+    const templatePath = path.join(__dirname, "../Proyecto_Final_Backend/views/pages/orderMail.ejs")
 
     const data = await ejs.renderFile(templatePath, {
           totalQty:order.totalQty,

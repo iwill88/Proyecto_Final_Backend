@@ -2,7 +2,6 @@
 import { Router } from "express"
 
 import userController from "../controllers/userController.js"
-import roleVerification from "../middlewares/roleVerification.js"
 
 let db 
 
@@ -10,16 +9,16 @@ db=userController
 
 const routerUsers = Router();
 
-routerUsers.get('/',  roleVerification, db.getAll);
+routerUsers.get('/', db.getAllUsers);
 
-routerUsers.get('/:id', roleVerification, db.find);
+routerUsers.get('/:id', db.getUser);
 
-routerUsers.get('/email', roleVerification, db.findByEmail);
+routerUsers.get('/email', db.findByEmail);
 
-routerUsers.post ('/', roleVerification, db.post);
+routerUsers.post ('/', db.createUser);
 
-routerUsers.delete('/:id', roleVerification, db.deleteUser);
+routerUsers.delete('/:id', db.deleteUser);
 
-routerUsers.put('/:id', roleVerification, db.updateUser);
+routerUsers.put('/:id', db.updateUser);
 
 export default routerUsers;

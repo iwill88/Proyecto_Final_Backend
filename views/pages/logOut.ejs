@@ -8,8 +8,14 @@
 <body>
     <div class="jumbotron">
         <div>
-            <h1 class="text-danger pb-4">Hasta luego <%= usuario %></h1>  
+            <h1 class="text-danger pb-4">Hasta luego <%= usuario %></h1> 
+            <form action="/backHome" method="post">
+                <div class="pt-5">
+                    <input type="submit" value="Ir al home" class="btn btn-success">
+                </div> 
+            </form> 
         </div>
+
     </div>
 
 

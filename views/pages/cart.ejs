@@ -86,7 +86,7 @@
                 <h3 class=" fs-5 fw-bold " style="width: 500px;">Costo total de la compra</h3>
                 <div >S/. <%= productos.subTotal  %></div>
             </div>
-            <form class="pt-4" action="/api/orders/createOrderEjs" method="post">
+            <form class="pt-4" action="/api/orders/createOrderView" method="post">
                 <input  class="hidden" type="text" name="id_user" value=<%= id_user %>>
                 <input type="submit" value="Finalizar compra" class="btn btn-warning">
               </form>

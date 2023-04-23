@@ -140,7 +140,7 @@ export default class UserService{
                     throw new Error('Faltan datos obligatorios');
                   }
 
-                this.dao.save(user);
+                UserDAO.save(user);
         
                 sendRegister(user)
           
