@@ -15,3 +15,7 @@
 [2023-04-21T20:48:37.536] [WARN] warn - ruta /pages/chat metodo GET no implementada
 [2023-04-21T20:50:32.443] [WARN] warn - ruta /pages/chat metodo GET no implementada
 [2023-04-21T22:08:57.564] [WARN] warn - ruta /favicon.ico metodo GET no implementada
+[2023-04-23T12:55:52.098] [WARN] warn - ruta /favicon.ico metodo GET no implementada
+[2023-04-23T12:58:06.157] [WARN] warn - ruta /favicon.ico metodo GET no implementada
+[2023-04-23T13:00:42.352] [WARN] warn - ruta /api/orders/createOrderView metodo POST no implementada
+[2023-04-23T13:17:03.791] [WARN] warn - ruta /favicon.ico metodo GET no implementada

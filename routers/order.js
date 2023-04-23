@@ -13,6 +13,6 @@ routerOrders.post('/createOrder', db.createOrder);
 
 //Router view
 
-routerOrders.post('/createOrderEjs', db.createOrderView);
+routerOrders.post('/createOrderView', db.createOrderView);
 
 export default routerOrders

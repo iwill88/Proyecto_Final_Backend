@@ -36,13 +36,17 @@ export default class OrderService{
         try {
 
             const owner = id_user;
+   
+            const user = await this.UserDao.getById(owner)
+
+            const cartId = user.cart
 
             let productosOrder = []
     
-            const user = await this.UserDao.getByCriteria(owner)
-
+           
     
-            const cart = await this.CartDao.getByIdPopulate(owner,"productos","item")
+            const cart = await this.CartDao.getByIdPopulate(cartId,"productos","item")
+
     
                 cart.productos.forEach((item) => {
                     productosOrder.push(item)

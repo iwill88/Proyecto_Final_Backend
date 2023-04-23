@@ -107,7 +107,7 @@ export default class CartService{
     const cartId = user.cart
 
     const cart = await this.CartDao.getByIdPopulate(cartId,"productos","item")
-    console.log("cart", cart)
+  
     if(!cart){
       loggerError.error(`No se encontró el carrito del usuario con ID ${owner}`);
       throw new Error(`No se encontró el carrito del usuario con ID ${owner}`);
@@ -227,7 +227,6 @@ export default class CartService{
 
     const product = await this.ProductDao.getById(id_prod);
     
-    console.log("producto",id_prod)
 
     const cart = await this.CartDao.getByIdPopulate(cartId,"productos","item")
 
@@ -304,7 +303,7 @@ async removeProduct(id_prod,id_user) {
         return  item.item._id.toString()  ===  product._id.toString() 
       });
 
-      console.log("index",itemIndex)
+
   
       const newArray = cart.productos.filter((item) => {
         return  item.item._id.toString() !== product._id.toString()

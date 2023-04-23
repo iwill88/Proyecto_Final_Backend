@@ -24,3 +24,4 @@
 [2023-04-17T18:52:58.951] [ERROR] error - No se encontró el carrito del usuario con ID 63fa6ee863c851f4df96daf5
 [2023-04-17T18:57:20.949] [ERROR] error - No se encontró el carrito del usuario con ID 63fa6ee863c851f4df96daf5
 [2023-04-17T18:59:39.745] [ERROR] error - No se encontró el carrito del usuario con ID 63fa6ee863c851f4df96daf5
+[2023-04-23T13:10:00.351] [ERROR] error - Se produjo un error al crear una nueva orden: TypeError: Cannot read properties of null (reading 'productos')
